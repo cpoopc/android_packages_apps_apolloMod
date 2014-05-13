@@ -97,7 +97,8 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
         mPanel.setAnchorPoint(0);
         
         mPanel.setDragView(findViewById(R.id.bottom_action_bar_dragview));
-        mPanel.setShadowDrawable(getResources().getDrawable(R.drawable.above_shadow));
+        //新版panel没有setShadowDrawable方法,注释掉
+//        mPanel.setShadowDrawable(getResources().getDrawable(R.drawable.above_shadow));
         mPanel.setAnchorPoint(0.0f);
         mPanel.setPanelSlideListener(new PanelSlideListener() {
             @Override

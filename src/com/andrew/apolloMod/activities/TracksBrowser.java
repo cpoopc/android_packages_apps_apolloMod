@@ -101,7 +101,7 @@ public class TracksBrowser extends FragmentActivity implements ServiceConnection
         mPanel = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         mPanel.setAnchorPoint(0);        
         mPanel.setDragView(findViewById(R.id.bottom_action_bar_dragview));
-        mPanel.setShadowDrawable(getResources().getDrawable(R.drawable.above_shadow));
+//        mPanel.setShadowDrawable(getResources().getDrawable(R.drawable.above_shadow));
         mPanel.setAnchorPoint(0.0f);
         mPanel.setPanelSlideListener(new PanelSlideListener() {
             @Override
