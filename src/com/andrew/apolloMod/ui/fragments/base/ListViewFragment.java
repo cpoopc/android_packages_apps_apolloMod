@@ -30,7 +30,11 @@ import com.andrew.apolloMod.ui.adapters.base.ListViewAdapter;
 import static com.andrew.apolloMod.Constants.INTENT_ADD_TO_PLAYLIST;
 import static com.andrew.apolloMod.Constants.INTENT_PLAYLIST_LIST;
 
-
+/**
+ * 
+ * @author Administrator
+ *	列表Fragment
+ */
 public abstract class ListViewFragment extends RefreshableFragment implements LoaderCallbacks<Cursor>,
         OnItemClickListener {
 
@@ -95,6 +99,7 @@ public abstract class ListViewFragment extends RefreshableFragment implements Lo
     public void refresh() {
         // The data need to be refreshed
         if( mListView != null ) {
+        	//异步任务
             getLoaderManager().restartLoader(0, null, this);
         }
     }

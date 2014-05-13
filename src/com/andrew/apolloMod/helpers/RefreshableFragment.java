@@ -21,6 +21,7 @@ import android.support.v4.app.Fragment;
 
 /**
  * An abstract class that defines a {@link Fragment} like refreshable
+ * 可刷新Fragment抽象类
  */
 public abstract class RefreshableFragment extends Fragment {
 

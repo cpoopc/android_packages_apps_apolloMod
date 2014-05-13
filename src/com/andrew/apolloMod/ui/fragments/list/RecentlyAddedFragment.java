@@ -14,9 +14,13 @@ import com.andrew.apolloMod.helpers.utils.MusicUtils;
 import com.andrew.apolloMod.ui.adapters.list.RecentlyAddedAdapter;
 import com.andrew.apolloMod.ui.fragments.base.ListViewFragment;
 import static com.andrew.apolloMod.Constants.NUMWEEKS;
-
+/**
+ * 
+ * @author Administrator
+ *	最近添加界面
+ */
 public class RecentlyAddedFragment extends ListViewFragment{
-
+	//接口:准备数据
     public void setupFragmentData(){
         mAdapter = new RecentlyAddedAdapter(getActivity(), R.layout.listview_items,
                 null, new String[] {}, new int[] {}, 0);

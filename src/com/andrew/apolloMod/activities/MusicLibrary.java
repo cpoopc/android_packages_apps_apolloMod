@@ -199,7 +199,7 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
         // Initiate PagerAdapter
         PagerAdapter mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
 
-        //Get tab visibility preferences
+        //从配置中获取设置为可见的页面
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         Set<String> defaults = new HashSet<String>(Arrays.asList(
         		getResources().getStringArray(R.array.tab_titles)
@@ -240,7 +240,7 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
         mViewPager.setAdapter(mPagerAdapter);
         //mViewPager.setCurrentItem(0);
 
-        // Tabs
+        // Tabs初始化
         initScrollableTabs(mViewPager);
     }
 
@@ -249,8 +249,12 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
      */
     public void initScrollableTabs(ViewPager mViewPager) {
         ScrollableTabView mScrollingTabs = (ScrollableTabView)findViewById(R.id.scrollingTabs);
+        //TODO 设置适配器干嘛?
+        //设置数据
         ScrollingTabsAdapter mScrollingTabsAdapter = new ScrollingTabsAdapter(this);
+        //设置tab显示数据
         mScrollingTabs.setAdapter(mScrollingTabsAdapter);
+        //关联viewpager
         mScrollingTabs.setViewPager(mViewPager);
     }
     

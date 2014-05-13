@@ -13,6 +13,7 @@ import com.andrew.apolloMod.R;
 
 /**
  * @author Andrew Neal
+ * 保存行布局的viewholder
  */
 public class ViewHolderList {
 

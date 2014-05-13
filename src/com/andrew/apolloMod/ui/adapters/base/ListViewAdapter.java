@@ -73,6 +73,7 @@ public abstract class ListViewAdapter extends SimpleCursorAdapter {
         final ViewHolderList viewholder;
         if ( view != null ) {
             viewholder = new ViewHolderList(view);
+            //TODO WeakReference是什么
             holderReference = new WeakReference<ViewHolderList>(viewholder);
             view.setTag(holderReference.get());
         } else {
@@ -114,26 +115,22 @@ public abstract class ListViewAdapter extends SimpleCursorAdapter {
         else{
         	 holderReference.get().mQuickContext.setVisibility(View.GONE);
         }
-
+        //播放时候的波浪动画,更改完毕
         if ( ( mPlayingId !=0 && mCurrentId !=0 ) && mPlayingId ==  mCurrentId ) {
-            holderReference.get().mPeakOne.setImageResource(R.anim.peak_meter_1);
-            holderReference.get().mPeakTwo.setImageResource(R.anim.peak_meter_2);
+            holderReference.get().mPeakOne.setImageResource(R.anim.peak_meter_cp);
             mPeakOneAnimation = (AnimationDrawable)holderReference.get().mPeakOne.getDrawable();
-            mPeakTwoAnimation = (AnimationDrawable)holderReference.get().mPeakTwo.getDrawable();
             try {
                 if ( MusicUtils.mService.isPlaying() ) {
                     mPeakOneAnimation.start();
-                    mPeakTwoAnimation.start();
                 } else {
                     mPeakOneAnimation.stop();
-                    mPeakTwoAnimation.stop();
                 }
             } catch ( RemoteException e ) {
                 e.printStackTrace();
             }
         } else {
             holderReference.get().mPeakOne.setImageResource(0);
-            holderReference.get().mPeakTwo.setImageResource(0);
+//            holderReference.get().mPeakTwo.setImageResource(0);
         }
         return view;
     }

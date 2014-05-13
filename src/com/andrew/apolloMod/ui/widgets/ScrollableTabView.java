@@ -30,6 +30,8 @@ import com.andrew.apolloMod.ui.adapters.TabAdapter;
 /**
  * I'm using a custom tab view in place of ActionBarTabs entirely for the theme
  * engine.
+ * 滚动tab,由button组成
+ * 关联viewpager,滚动效果
  */
 public class ScrollableTabView extends HorizontalScrollView implements
         ViewPager.OnPageChangeListener {
@@ -137,7 +139,7 @@ public class ScrollableTabView extends HorizontalScrollView implements
         if (changed && mPager != null)
             selectTab(mPager.getCurrentItem());
     }
-
+    //滚动效果
     private void selectTab(int position) {
 
         for (int i = 0, pos = 0; i < mContainer.getChildCount(); i ++ , pos++) {

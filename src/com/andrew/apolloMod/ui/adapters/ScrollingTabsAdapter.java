@@ -15,7 +15,11 @@ import android.widget.Button;
 import com.andrew.apolloMod.R;
 
 import static com.andrew.apolloMod.Constants.TABS_ENABLED;
-
+/**
+ * 
+ * @author Administrator
+ *	设置tab内容,button效果
+ */
 public class ScrollingTabsAdapter implements TabAdapter {
 
     private final Activity activity;
