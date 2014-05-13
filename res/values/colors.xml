@@ -16,6 +16,7 @@
     <color name="shuffle_grey">#ffdedede</color>
 
     <color name="background_grey">#ffdedede</color>
+    <color name="background_red">#ffde222e</color>
     
     <!-- Transparent -->
     <color name="transparent">#00000000</color>
