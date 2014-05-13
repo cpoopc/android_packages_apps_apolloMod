@@ -34,7 +34,7 @@
     <style name="Tabs">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/tab_height</item>
-        <item name="android:background">@drawable/tab</item>
+        <item name="android:background">@drawable/tab_cp</item>
         <item name="android:gravity">center</item>
         <item name="android:paddingBottom">@dimen/tab_padding_top_bottom</item>
         <item name="android:paddingLeft">@dimen/tab_padding_left_right</item>
