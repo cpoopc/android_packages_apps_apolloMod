@@ -33,7 +33,7 @@ import static com.andrew.apolloMod.Constants.INTENT_PLAYLIST_LIST;
 /**
  * 
  * @author Administrator
- *	列表Fragment
+ *	列表Fragment.
  */
 public abstract class ListViewFragment extends RefreshableFragment implements LoaderCallbacks<Cursor>,
         OnItemClickListener {

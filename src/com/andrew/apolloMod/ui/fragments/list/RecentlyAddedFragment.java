@@ -24,6 +24,7 @@ public class RecentlyAddedFragment extends ListViewFragment{
     public void setupFragmentData(){
         mAdapter = new RecentlyAddedAdapter(getActivity(), R.layout.listview_items,
                 null, new String[] {}, new int[] {}, 0);
+        //构造查询语句,父类中回调,给cursorloader使用
     	mProjection = new String[] {
                 BaseColumns._ID, MediaColumns.TITLE, AudioColumns.ALBUM, AudioColumns.ARTIST
         };
@@ -35,6 +36,7 @@ public class RecentlyAddedFragment extends ListViewFragment{
                 + (System.currentTimeMillis() / 1000 - X));
         mWhere = where.toString();
         mSortOrder = MediaColumns.DATE_ADDED + " DESC";
+        //查询音乐的uri?
         mUri = Audio.Media.EXTERNAL_CONTENT_URI;
         mTitleColumn = MediaColumns.TITLE;       
     }

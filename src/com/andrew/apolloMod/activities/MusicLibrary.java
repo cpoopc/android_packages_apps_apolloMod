@@ -76,19 +76,17 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-        // Landscape mode on phone isn't ready
-        if (!ApolloUtils.isTablet(this))
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        
-        // Scan for music
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);       
-       // getSupportFragmentManager().beginTransaction().add(R.id.bottomactionbar_new, new BottomActionBarFragment(), "bottomactionbar_new").commit();
-        
-        // Layout
+        requestFeature();
         setContentView(R.layout.library_browser);
-        
-        mBActionbar =(BottomActionBarFragment) getSupportFragmentManager().findFragmentById(R.id.bottomactionbar_new);
+        initBottomPanel();
+        initActionBar();
+        //TODO
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        initPager();  
+    }
+    //slidinguppanel
+	private void initBottomPanel() {
+		mBActionbar =(BottomActionBarFragment) getSupportFragmentManager().findFragmentById(R.id.bottomactionbar_new);
   
         mBActionbar.setUpQueueSwitch(this);
         
@@ -139,16 +137,17 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
         	    }
         	});
         }
+	}
+	private void requestFeature() {
+		getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        // Landscape mode on phone isn't ready
+        if (!ApolloUtils.isTablet(this))
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         
-        // Style the actionbar
-        initActionBar();
-
-        // Control Media volume
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        
-        // Important!
-        initPager();  
-    }
+        // Scan for music
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);       
+       // getSupportFragmentManager().beginTransaction().add(R.id.bottomactionbar_new, new BottomActionBarFragment(), "bottomactionbar_new").commit();
+	}
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
@@ -196,7 +195,7 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
      * Initiate ViewPager and PagerAdapter
      */
     public void initPager() {
-        // Initiate PagerAdapter
+        // viewpager:fragment的适配器(滑动fragment适配器)
         PagerAdapter mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
 
         //从配置中获取设置为可见的页面
@@ -249,7 +248,6 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
      */
     public void initScrollableTabs(ViewPager mViewPager) {
         ScrollableTabView mScrollingTabs = (ScrollableTabView)findViewById(R.id.scrollingTabs);
-        //TODO 设置适配器干嘛?
         //设置数据
         ScrollingTabsAdapter mScrollingTabsAdapter = new ScrollingTabsAdapter(this);
         //设置tab显示数据
@@ -263,8 +261,10 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
      */
     private void initActionBar() {
     	ActionBar actBar = getActionBar();
+    	actBar.setLogo(R.drawable.ic_launcher);
+    	actBar.setTitle(R.string.app_name);
     	actBar.setDisplayUseLogoEnabled(true);
-        actBar.setDisplayShowTitleEnabled(false);
+        actBar.setDisplayShowTitleEnabled(true);
     }
     
     /**
