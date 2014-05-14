@@ -67,7 +67,7 @@
             android:id="@+id/bottom_action_bar_play"
             style="@style/BottomActionBarItem"
             android:contentDescription="@string/cd_play"
-            android:src="@drawable/apollo_holo_light_play" />
+            android:src="@drawable/selector_play" />
 
         <ImageButton
             android:id="@+id/bottom_action_bar_next"
