@@ -116,6 +116,7 @@
     <string name="tab_songs">歌曲</string>
     <string name="tab_playlists">播放列表</string>
     <string name="tab_genres">流派</string>
+    <string name="tab_online">云音乐</string>
 
     <!-- Something went wrong -->
     <string name="error">错误</string>

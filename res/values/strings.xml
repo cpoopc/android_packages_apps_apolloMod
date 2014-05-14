@@ -39,6 +39,7 @@
 
     <!-- Toasts after adding song(s) to playlists -->
     <plurals name="NNNtrackstoplaylist">
+
         <!-- message shown when one song was added -->
         <item quantity="one">1 song added to playlist</item>
         <!-- message shown when zero or more than one song was added -->
@@ -46,7 +47,6 @@
     </plurals>
     <!-- Toasts after removing song from playlist -->
     <string name="track_removed_from_playlist">\"%s\" removed from playlist</string>
-    
 
     <!-- Headers -->
     <string name="album_header">ALBUM LIST</string>
@@ -92,8 +92,8 @@
     <string name="image_edit_file">Original image from file</string>
     <string name="image_edit_lastfm">Fetch image from last.fm</string>
     <string name="image_edit_web">Search the web for an image</string>
-    
-    <!--  ContextMenu Headers -->
+
+    <!-- ContextMenu Headers -->
     <string name="image_edit_albums">Edit Album Artwork</string>
     <string name="image_edit_artists">Edit Artist Image</string>
     <string name="image_edit_genre">Edit Genre Image</string>
@@ -123,12 +123,13 @@
     <string name="delete_warning">This will permanently delete the cached image entries</string>
     <string name="visualizer_title">Audio visualizer</string>
     <string name="visualizer_summary">Choose to display audio visualizations during playback</string>
-	<string name="widget_style_title">Widget Style</string>
+    <string name="widget_style_title">Widget Style</string>
     <string name="widget_style_summary">Choose the widget design</string>
     <string name="widget_style_dark">Holo Dark</string>
     <string name="widget_style_light">Holo Light</string>
     <string name="about_apollomod_title">About ApolloMod</string>
-    <string name="about_apollomod_message"><![CDATA[ApolloMod is an open source music player based on CyanogenMod\'s Apollo Music Player and released under the same Apache License.\n\n
+    <string name="about_apollomod_message">
+<![CDATA[ApolloMod is an open source music player based on CyanogenMod\'s Apollo Music Player and released under the same Apache License.\n\n
 License Link:\n
         http://www.apache.org/licenses/LICENSE-2.0.html \n\n
 ApolloMod Source Code:\n
@@ -136,10 +137,11 @@ https://github.com/Splitter/android_packages_apps_apolloMod  \n\n
 Original Apollo Source Code: \n
 https://github.com/CyanogenMod/android_packages_apps_Apollo/tree/cm-10.1
         
-    ]]></string>
+    ]]>
+    </string>
     <string name="dependencies">Dependency Licenses</string>
     <string name="dependencies_title">Dependency Licenses:</string>
-    
+
     <!-- Settings keys -->
     <string name="key_themes" translatable="false">themepreview</string>
     <string name="key_themes_package" translatable="false">themePackageName</string>
@@ -170,7 +172,8 @@ https://github.com/CyanogenMod/android_packages_apps_Apollo/tree/cm-10.1
     <string name="tab_songs">Songs</string>
     <string name="tab_playlists">Playlists</string>
     <string name="tab_genres">Genres</string>
-    
+    <string name="tab_online">online</string>
+
     <!-- Visualizations -->
     <string name="visual_none">None</string>
     <string name="visual_bargraph">Bar Graph</string>
@@ -186,12 +189,12 @@ https://github.com/CyanogenMod/android_packages_apps_Apollo/tree/cm-10.1
 
     <!-- Something went wrong -->
     <string name="error">Error</string>
-    
+
     <!-- Titles for Albums/Artist screens -->
     <string name="artist_page_title">" Artist: "</string>
     <string name="album_page_title">" Album: "</string>
-    
-    <!--  Simple EQ -->
+
+    <!-- Simple EQ -->
     <string name="simple_eq_page_title">Equalizer</string>
     <string name="simple_eq_bass">Bass Boost</string>
     <string name="simple_eq_equalizer">Equalizer</string>
@@ -201,5 +204,6 @@ https://github.com/CyanogenMod/android_packages_apps_Apollo/tree/cm-10.1
     <string name="simple_eq_band3">1kHz</string>
     <string name="simple_eq_band4">5kHz</string>
     <string name="simple_eq_band5">16kHz</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
