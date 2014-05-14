@@ -35,7 +35,6 @@ public class ScrollingTabsAdapter implements TabAdapter {
 
         //Get default values for tab visibility preferences
         final String[] mTitles = activity.getResources().getStringArray(R.array.tab_titles);
-
         //Get tab visibility preferences
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
         Set<String> defaults = new HashSet<String>(Arrays.asList(mTitles));
@@ -46,7 +45,6 @@ public class ScrollingTabsAdapter implements TabAdapter {
         		//or display error when no option is chosen
         if(tabs_set.size()==0)
         	tabs_set = defaults;
-        
         //MultiSelectListPreference fails to preserve order of options chosen
         //Re-order based on order of default options array
         //This ensures titles are attached to correct tabs/pages

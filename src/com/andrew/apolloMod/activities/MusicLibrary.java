@@ -35,6 +35,7 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 
 import com.andrew.apolloMod.IApolloService;
+import com.andrew.apolloMod.OnlineMusicFragment;
 import com.andrew.apolloMod.R;
 import com.andrew.apolloMod.ui.adapters.PagerAdapter;
 import com.andrew.apolloMod.ui.adapters.ScrollingTabsAdapter;
@@ -42,6 +43,7 @@ import com.andrew.apolloMod.ui.fragments.BottomActionBarFragment;
 import com.andrew.apolloMod.ui.fragments.grid.AlbumsFragment;
 import com.andrew.apolloMod.ui.fragments.grid.ArtistsFragment;
 import com.andrew.apolloMod.ui.fragments.list.GenresFragment;
+import com.andrew.apolloMod.ui.fragments.list.OnlineListFragment;
 import com.andrew.apolloMod.ui.fragments.list.PlaylistsFragment;
 import com.andrew.apolloMod.ui.fragments.list.RecentlyAddedFragment;
 import com.andrew.apolloMod.ui.fragments.list.SongsFragment;
@@ -210,7 +212,6 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
         if(tabs_set.size()==0){
         	tabs_set = defaults;
         }
-        
         //Only show tabs that were set in preferences
         // Recently added tracks
         if(tabs_set.contains(getResources().getString(R.string.tab_recent)))
@@ -230,6 +231,9 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
         // // Genres
         if(tabs_set.contains(getResources().getString(R.string.tab_genres)))
         	mPagerAdapter.addFragment(new GenresFragment());
+        //在线音乐
+        if(tabs_set.contains(getResources().getString(R.string.tab_online)))
+        	mPagerAdapter.addFragment(new OnlineMusicFragment());
 
         // Initiate ViewPager
         ViewPager mViewPager = (ViewPager)findViewById(R.id.viewPager);
