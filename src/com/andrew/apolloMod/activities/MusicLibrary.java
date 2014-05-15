@@ -20,6 +20,7 @@ import android.media.AudioManager;
 import android.media.audiofx.AudioEffect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
@@ -27,12 +28,14 @@ import android.provider.MediaStore.Audio;
 import android.provider.MediaStore.Audio.AudioColumns;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.andrew.apolloMod.IApolloService;
 import com.andrew.apolloMod.OnlineMusicFragment;
@@ -53,6 +56,7 @@ import com.andrew.apolloMod.preferences.SettingsHolder;
 import com.andrew.apolloMod.service.ApolloService;
 import com.andrew.apolloMod.service.ServiceToken;
 import com.andrew.apolloMod.ui.widgets.ScrollableTabView;
+import com.example.ex.ToastUtils;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
 
@@ -139,6 +143,23 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
         	    }
         	});
         }
+	}
+	private boolean hasPress;
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(hasPress){
+			finish();
+		}
+		hasPress = true;
+		Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+		new Handler().postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				hasPress = false;
+			}
+		}, 2000);
+		return true;
 	}
 	private void requestFeature() {
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
@@ -308,6 +329,7 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+    	//重新运行程序
     	Intent i = getBaseContext().getPackageManager()
 	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
 		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

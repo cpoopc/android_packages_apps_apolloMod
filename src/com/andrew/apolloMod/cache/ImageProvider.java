@@ -151,7 +151,9 @@ public class ImageProvider implements GetBitmapTask.OnBitmapReadyListener{
     
     public void clearAllCaches(){
     	try{
+    		//删除外存缓存
     		ImageUtils.deleteDiskCache(mContext);
+    		//删除内存缓存
     		memCache.clearMemCache();
     	}
     	catch(Exception e){}

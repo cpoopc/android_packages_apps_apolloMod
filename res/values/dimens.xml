@@ -16,7 +16,7 @@
     <!-- Bottom ActionBar -->
     <dimen name="bottom_action_bar_height">68dp</dimen>
     <dimen name="bottom_action_bar_padding_left">12dp</dimen>
-    <dimen name="bottom_action_bar_item_width">36dp</dimen>
+    <dimen name="bottom_action_bar_item_width">46dp</dimen>
     <dimen name="bottom_action_bar_item_padding_left_right">6dp</dimen>
     <dimen name="bottom_action_bar_album_art_width_height">45dp</dimen>
     <dimen name="bottom_action_bar_divider_height">2dp</dimen>

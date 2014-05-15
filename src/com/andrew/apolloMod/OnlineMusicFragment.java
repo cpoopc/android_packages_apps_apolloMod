@@ -89,21 +89,23 @@ public class OnlineMusicFragment extends Fragment implements OnItemClickListener
 			public void run() {
 				try {
 					String httpGet = HTTPUtils.HTTPGet(Constants.URL_ONLINE);
-					Log.e("httpGet", httpGet);
-					JSONArray jsonArray = new JSONArray(httpGet);
-					for (int i = 0; i < jsonArray.length(); i++) {
-						JSONObject jsonObject = jsonArray.getJSONObject(i);
-						String TITLE = jsonObject.getString("TITLE");
-						String ARTIST = jsonObject.getString("ARTIST");
-						musicList.add(new MusicInfo(TITLE, ARTIST));
-					}
-					getActivity().runOnUiThread(new Runnable() {
-						
-						@Override
-						public void run() {
-							musicAdapter.notifyDataSetChanged();
+//					Log.e("httpGet", httpGet);
+					if(httpGet!=null){
+						JSONArray jsonArray = new JSONArray(httpGet);
+						for (int i = 0; i < jsonArray.length(); i++) {
+							JSONObject jsonObject = jsonArray.getJSONObject(i);
+							String TITLE = jsonObject.getString("TITLE");
+							String ARTIST = jsonObject.getString("ARTIST");
+							musicList.add(new MusicInfo(TITLE, ARTIST));
 						}
-					});
+						getActivity().runOnUiThread(new Runnable() {
+							
+							@Override
+							public void run() {
+								musicAdapter.notifyDataSetChanged();
+							}
+						});
+					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

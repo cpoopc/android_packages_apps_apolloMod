@@ -4,6 +4,9 @@
 
 package com.andrew.apolloMod.preferences;
 
+import java.io.File;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ComponentName;
@@ -25,6 +28,7 @@ import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andrew.apolloMod.IApolloService;
 import com.andrew.apolloMod.R;
@@ -43,7 +47,8 @@ public class SettingsHolder extends PreferenceActivity  implements ServiceConnec
 	Context mContext;
 
     private ServiceToken mToken;
-    
+
+    private long filelen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // This should be called first thing
@@ -65,6 +70,16 @@ public class SettingsHolder extends PreferenceActivity  implements ServiceConnec
         initDependencies();
         
     }
+	private String cachecount() {
+		final File dir = getExternalCacheDir();
+        final File[] files = dir.listFiles();
+        for (final File file : files) {
+        	filelen +=file.length();
+        }
+        filelen /=(1024*1024);
+        Toast.makeText(this, "文件大小:"+filelen+"MB", Toast.LENGTH_SHORT).show();
+        return "";
+	}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -152,7 +167,9 @@ public class SettingsHolder extends PreferenceActivity  implements ServiceConnec
      * Removes all of the cache entries.
      */
     private void initDeleteCache() {
+    	//找到选项
         final Preference deleteCache = findPreference(DELETE_CACHE);
+        deleteCache.setSummary("缓存大小"+filelen+"MB");
         deleteCache.setOnPreferenceClickListener(new OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(final Preference preference) {
@@ -162,13 +179,7 @@ public class SettingsHolder extends PreferenceActivity  implements ServiceConnec
                             public void onClick(final DialogInterface dialog, final int which) {                        		
                                 ImageProvider.getInstance( (Activity) mContext ).clearAllCaches();
                             }
-                        }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(final DialogInterface dialog, final int which) {
-                                dialog.dismiss();
-                            }
-                        }).create().show();
+                        }).setNegativeButton(android.R.string.cancel, null).create().show();
                 return true;
             }
         });
