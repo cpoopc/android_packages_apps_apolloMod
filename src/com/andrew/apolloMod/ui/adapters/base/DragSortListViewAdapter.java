@@ -5,6 +5,7 @@ import static com.andrew.apolloMod.Constants.SRC_FIRST_AVAILABLE;
 import static com.andrew.apolloMod.Constants.TYPE_ARTIST;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
@@ -36,7 +37,9 @@ public abstract class DragSortListViewAdapter extends SimpleDragSortCursorAdapte
     public String[] mImageData = null;
     
     public long mPlayingId = 0, mCurrentId = 0;
-
+    
+    //TODO
+    public ArrayList<Integer> orderList;
     private final View.OnClickListener showContextMenu = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -54,8 +57,13 @@ public abstract class DragSortListViewAdapter extends SimpleDragSortCursorAdapte
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final View view = super.getView(position, convertView, parent);
-
+        //初始化orderlist
+        if(orderList.size()==position){
+        	orderList.add(position);
+        }
         Cursor mCursor = (Cursor) getItem(position);
+        //每次getview都setup?
+        //!!getItem(position),系统自动mCursor.moveToNext()
         setupViewData(mCursor);
 
         final ViewHolderList viewholder;

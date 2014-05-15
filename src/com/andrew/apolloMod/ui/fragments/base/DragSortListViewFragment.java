@@ -4,6 +4,8 @@
 
 package com.andrew.apolloMod.ui.fragments.base;
 
+import java.util.ArrayList;
+
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -35,7 +37,7 @@ import com.mobeta.android.dslv.DragSortListView;
 import static com.andrew.apolloMod.Constants.INTENT_ADD_TO_PLAYLIST;
 import static com.andrew.apolloMod.Constants.INTENT_PLAYLIST_LIST;
 
-
+//可拖拽
 public abstract class DragSortListViewFragment extends RefreshableFragment implements LoaderCallbacks<Cursor>,
         OnItemClickListener {
 
@@ -73,7 +75,9 @@ public abstract class DragSortListViewFragment extends RefreshableFragment imple
     protected String[] mProjection = null;
     
     protected Uri mUri = null;
-
+    
+    //TODO
+    protected ArrayList<Integer> morderList = new ArrayList<Integer>();
     // Bundle
     public DragSortListViewFragment() {
     }
@@ -99,6 +103,7 @@ public abstract class DragSortListViewFragment extends RefreshableFragment imple
         mListView.setOnItemClickListener(this);
         mListView.setAdapter(mAdapter);
         DragSortController controller = new DragSortController(mListView);
+        //设置拖拽控件
         controller.setDragHandleId(R.id.listview_drag_handle);
         controller.setRemoveEnabled(true);
         controller.setRemoveMode(1);
@@ -206,9 +211,11 @@ public abstract class DragSortListViewFragment extends RefreshableFragment imple
     	}
         return super.onContextItemSelected(item);
     }
-
+   
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+    	//取出真实地址
+    	position = morderList.get(position);
         MusicUtils.playAll(getActivity(), mCursor, position);
     }
 

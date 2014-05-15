@@ -1,6 +1,8 @@
 
 package com.andrew.apolloMod.ui.adapters.list;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.BaseColumns;
@@ -10,7 +12,7 @@ import android.widget.Toast;
 import com.andrew.apolloMod.R;
 import com.andrew.apolloMod.helpers.utils.MusicUtils;
 import com.andrew.apolloMod.ui.adapters.base.DragSortListViewAdapter;
-
+//拖拽适配器
 public class NowPlayingAdapter extends DragSortListViewAdapter {
 
     public NowPlayingAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
@@ -27,11 +29,15 @@ public class NowPlayingAdapter extends DragSortListViewAdapter {
         mPlayingId = MusicUtils.getCurrentAudioId();
         mCurrentId = mCursor.getLong(mCursor.getColumnIndexOrThrow(BaseColumns._ID));
     }
-    
     @Override
     public void drop(int from, int to) {
     	super.drop(from, to);
         MusicUtils.moveQueueItem(from, to);
+        //TODO 如何改变cursor顺序?改变顺序后下次读取如何保持上次顺序?
+        //建立arraylist,记录顺序
+        orderList.set(from, to);
+        orderList.set(to, from);
+        
     }
     
     @Override

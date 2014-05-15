@@ -108,11 +108,13 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
             @Override
             public void onPanelSlide(View panel, float slideOffset) {
                 if (slideOffset < 0.2) {
+                	//隐藏上一首播放下一首,显示三道杠
                     mBActionbar.onExpanded();
                     if (getActionBar().isShowing()) {
                         getActionBar().hide();
                     }
                 } else {
+                	//显示上一首播放下一首,隐藏三道杠
                     mBActionbar.onCollapsed();
                     if (!getActionBar().isShowing()) {
                         getActionBar().show();
@@ -145,21 +147,26 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
         }
 	}
 	private boolean hasPress;
+	//2秒内按两次退出
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if(hasPress){
-			finish();
-		}
-		hasPress = true;
-		Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
-		new Handler().postDelayed(new Runnable() {
-			
-			@Override
-			public void run() {
-				hasPress = false;
+		if(keyCode==KeyEvent.KEYCODE_BACK){
+			if(hasPress){
+				finish();
+				return true;
 			}
-		}, 2000);
-		return true;
+			hasPress = true;
+			Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+			new Handler().postDelayed(new Runnable() {
+				
+				@Override
+				public void run() {
+					hasPress = false;
+				}
+			}, 2000);
+			return true;
+		}
+		return false;
 	}
 	private void requestFeature() {
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);

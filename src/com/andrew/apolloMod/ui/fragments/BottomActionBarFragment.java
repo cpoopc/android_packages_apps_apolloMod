@@ -178,10 +178,12 @@ public class BottomActionBarFragment extends Fragment {
             ex.printStackTrace();
         }
     }
-
+    //三道杠
 	public void setUpQueueSwitch(Activity activity) {
 		// TODO Auto-generated method stub
+		//封面
 		albumArt = (RelativeLayout) activity.findViewById(R.id.audio_player_album_art_wrapper);
+		//列表
         listQueue = (RelativeLayout) activity.findViewById(R.id.audio_player_queue_wrapper);
         mQueue.setOnClickListener(new OnClickListener() {
             @Override

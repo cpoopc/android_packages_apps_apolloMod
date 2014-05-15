@@ -14,13 +14,16 @@ import com.andrew.apolloMod.helpers.utils.MusicUtils;
 import com.andrew.apolloMod.ui.adapters.list.NowPlayingAdapter;
 import com.andrew.apolloMod.ui.fragments.base.DragSortListViewFragment;
 import static com.andrew.apolloMod.Constants.TYPE_SONG;
-
+//上拉后的播放列表,可拖拽
+//bug,拖拽后实际没变
 public class NowPlayingFragment extends DragSortListViewFragment{
 	
 	@Override
 	public void setupFragmentData() {
 		mAdapter = new NowPlayingAdapter(getActivity(), R.layout.dragsort_listview_items, null,
 		        							new String[] {}, new int[] {}, 0);
+		//把list传过去
+		mAdapter.orderList = morderList;
 		mProjection = new String[] {
 		            BaseColumns._ID, MediaColumns.TITLE, AudioColumns.ALBUM, AudioColumns.ARTIST
 		    };
