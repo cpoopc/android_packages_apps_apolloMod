@@ -194,7 +194,7 @@ public class BottomActionBarFragment extends Fragment {
             		mQueue.setImageResource(R.drawable.btn_switch_queue_active);
                     albumArt.setVisibility(View.GONE);
                     listQueue.setVisibility(View.VISIBLE);
-                    // Fade out the pager container
+                    // Fade out the pager container 
                     fade(albumArt, 0f);
                     // Fade in the album art
                     fade(listQueue, 1f);
