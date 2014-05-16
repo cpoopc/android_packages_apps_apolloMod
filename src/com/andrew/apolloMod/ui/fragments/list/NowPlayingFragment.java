@@ -2,6 +2,11 @@
 package com.andrew.apolloMod.ui.fragments.list;
 
 import android.support.v4.content.Loader;
+import android.util.Log;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
@@ -9,6 +14,8 @@ import android.provider.BaseColumns;
 import android.provider.MediaStore.Audio;
 import android.provider.MediaStore.Audio.AudioColumns;
 import android.provider.MediaStore.MediaColumns;
+
+import com.andrew.apolloMod.Constants;
 import com.andrew.apolloMod.R;
 import com.andrew.apolloMod.helpers.utils.MusicUtils;
 import com.andrew.apolloMod.ui.adapters.list.NowPlayingAdapter;
@@ -18,12 +25,11 @@ import static com.andrew.apolloMod.Constants.TYPE_SONG;
 //bug,拖拽后实际没变
 public class NowPlayingFragment extends DragSortListViewFragment{
 	
+	private QueueChangeReceiver receiver;
 	@Override
 	public void setupFragmentData() {
 		mAdapter = new NowPlayingAdapter(getActivity(), R.layout.dragsort_listview_items, null,
 		        							new String[] {}, new int[] {}, 0);
-		//把list传过去
-		mAdapter.orderList = morderList;
 		mProjection = new String[] {
 		            BaseColumns._ID, MediaColumns.TITLE, AudioColumns.ALBUM, AudioColumns.ARTIST
 		    };
@@ -46,7 +52,10 @@ public class NowPlayingFragment extends DragSortListViewFragment{
         mMediaIdColumn = BaseColumns._ID;
         mType = TYPE_SONG;
         mFragmentGroupId = 91;
+        //注册广播,监听拖拽事件
+        registBrocast();
 	}
+
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
@@ -84,7 +93,25 @@ public class NowPlayingFragment extends DragSortListViewFragment{
         reloadQueueCursor();
         mListView.invalidateViews();
     }
+	@Override
+	public void onDestroy() {
+		getActivity().unregisterReceiver(receiver);
+		super.onDestroy();
+	}
+	private void registBrocast() {
+		receiver = new QueueChangeReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Constants.MOVEQUEUEITEM);
+        getActivity().registerReceiver(receiver , filter );
+	}
 
+	class QueueChangeReceiver extends BroadcastReceiver{
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			//播放列表拖拽后 重载cursor
+				reloadQueueCursor();
+		}}
     /**
      * Reload the queue after we remove a track
      */

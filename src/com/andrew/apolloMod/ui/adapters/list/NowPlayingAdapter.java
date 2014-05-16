@@ -4,6 +4,7 @@ package com.andrew.apolloMod.ui.adapters.list;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 import android.provider.MediaStore.MediaColumns;
@@ -33,10 +34,6 @@ public class NowPlayingAdapter extends DragSortListViewAdapter {
     public void drop(int from, int to) {
     	super.drop(from, to);
         MusicUtils.moveQueueItem(from, to);
-        //TODO 如何改变cursor顺序?改变顺序后下次读取如何保持上次顺序?
-        //建立arraylist,记录顺序
-        orderList.set(from, to);
-        orderList.set(to, from);
         
     }
     

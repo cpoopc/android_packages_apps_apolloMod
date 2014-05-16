@@ -234,6 +234,7 @@ public class QuickQueueFragment extends Fragment implements LoaderCallbacks<Curs
 
     /**
      * Update the list as needed
+     * 更新列表
      */
     private final BroadcastReceiver mMediaStatusReceiver = new BroadcastReceiver() {
 
@@ -259,6 +260,7 @@ public class QuickQueueFragment extends Fragment implements LoaderCallbacks<Curs
         IntentFilter filter = new IntentFilter();
         filter.addAction(ApolloService.META_CHANGED);
         filter.addAction(ApolloService.QUEUE_CHANGED);
+        //注册广播
         getActivity().registerReceiver(mMediaStatusReceiver, filter);
     }
 

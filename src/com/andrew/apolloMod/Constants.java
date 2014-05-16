@@ -8,6 +8,7 @@ package com.andrew.apolloMod;
  * @author Andrew Neal
  */
 public final class Constants {
+	public final static String MOVEQUEUEITEM = "moveQueueItem";
 	//在线音乐地址
 	public final static String URL_ONLINE = "http://192.168.56.101:8080/cpmusic/musiclist.txt"; 
     // Last.fm API

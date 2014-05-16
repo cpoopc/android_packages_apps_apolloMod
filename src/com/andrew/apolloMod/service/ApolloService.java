@@ -66,7 +66,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
+import com.andrew.apolloMod.Constants;
 import com.andrew.apolloMod.IApolloService;
 import com.andrew.apolloMod.R;
 import com.andrew.apolloMod.app.widgets.AppWidget11;
@@ -942,6 +944,7 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
         i.putExtra("track", getTrackName());
         i.putExtra("playing", mIsSupposedToBePlaying);
         i.putExtra("isfavorite", isFavorite());
+        //粘滞广播
         sendStickyBroadcast(i);
 
         i = new Intent(i);
@@ -1812,7 +1815,7 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
 
     /**
      * Moves an item in the queue from one position to another
-     *
+     * 移动队列里面的项目
      * @param from The position the item is currently at
      * @param to The position the item is being moved to
      */
@@ -1848,6 +1851,10 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
                 }
             }
             notifyChange(QUEUE_CHANGED);
+            //发送广播,提示更新cursor
+            Intent intent = new Intent();
+            intent.setAction(Constants.MOVEQUEUEITEM);
+            sendBroadcast(intent ); 
         }
     }
     
