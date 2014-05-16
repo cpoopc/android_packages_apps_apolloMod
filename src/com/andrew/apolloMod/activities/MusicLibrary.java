@@ -46,7 +46,6 @@ import com.andrew.apolloMod.ui.fragments.BottomActionBarFragment;
 import com.andrew.apolloMod.ui.fragments.grid.AlbumsFragment;
 import com.andrew.apolloMod.ui.fragments.grid.ArtistsFragment;
 import com.andrew.apolloMod.ui.fragments.list.GenresFragment;
-import com.andrew.apolloMod.ui.fragments.list.OnlineListFragment;
 import com.andrew.apolloMod.ui.fragments.list.PlaylistsFragment;
 import com.andrew.apolloMod.ui.fragments.list.RecentlyAddedFragment;
 import com.andrew.apolloMod.ui.fragments.list.SongsFragment;
@@ -56,7 +55,6 @@ import com.andrew.apolloMod.preferences.SettingsHolder;
 import com.andrew.apolloMod.service.ApolloService;
 import com.andrew.apolloMod.service.ServiceToken;
 import com.andrew.apolloMod.ui.widgets.ScrollableTabView;
-import com.example.ex.ToastUtils;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
 
@@ -86,7 +84,7 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
         setContentView(R.layout.library_browser);
         initBottomPanel();
         initActionBar();
-        //TODO
+        //TODO 音乐播放
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         initPager();  
     }
@@ -314,14 +312,14 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
 	            break;
 
 	        case R.id.action_eqalizer:
-	    	    final Intent intent = new Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL);
-	            if (getPackageManager().resolveActivity(intent, 0) == null) {
+//	    	    final Intent intent = new Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL);
+//	            if (getPackageManager().resolveActivity(intent, 0) == null) {
 		        	startActivity(new Intent(this, SimpleEq.class));
-	        	}
-	        	else{
-	        		intent.putExtra(AudioEffect.EXTRA_AUDIO_SESSION, MusicUtils.getCurrentAudioId());
-	        		startActivity(intent);
-	        	}
+//	        	}
+//	        	else{
+//	        		intent.putExtra(AudioEffect.EXTRA_AUDIO_SESSION, MusicUtils.getCurrentAudioId());
+//	        		startActivity(intent);
+//	        	}
 	            break;
 
 	        case R.id.action_shuffle_all:

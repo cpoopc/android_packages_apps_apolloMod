@@ -54,7 +54,17 @@ public class SimpleEq extends FragmentActivity
 
         // Layout
         setContentView(R.layout.simple_eq);
-        bBoost =  (SeekBar)findViewById(R.id.simple_eq_bassboost);
+        initUI();
+        
+        mPreferences = getSharedPreferences(APOLLO_PREFERENCES, MODE_WORLD_READABLE
+                | MODE_WORLD_WRITEABLE);
+        
+        initEqualizerValues();
+        
+    }
+
+	private void initUI() {
+		bBoost =  (SeekBar)findViewById(R.id.simple_eq_bassboost);
         bBoost.setOnSeekBarChangeListener(this);
         bBoostEnable = (CheckBox)findViewById(R.id.simple_eq_bass);
         bBoostEnable.setOnCheckedChangeListener(this);
@@ -79,13 +89,7 @@ public class SimpleEq extends FragmentActivity
         SeekBars[5]  = (VerticalSeekBar)findViewById(R.id.simple_eq_band5_seek);
         SeekBars[5].setOnSeekBarChangeListener(this);
         SeekBarLabels[5] = (TextView)findViewById(R.id.simple_eq_band5);
-        
-        mPreferences = getSharedPreferences(APOLLO_PREFERENCES, MODE_WORLD_READABLE
-                | MODE_WORLD_WRITEABLE);
-        
-        initEqualizerValues();
-        
-    }
+	}
     
     public void initEqualizerValues(){
     	bBoost.setProgress(mPreferences.getInt("simple_eq_bboost",0));
