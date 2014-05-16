@@ -111,6 +111,7 @@ public class NowPlayingFragment extends DragSortListViewFragment{
 		public void onReceive(Context context, Intent intent) {
 			//播放列表拖拽后 重载cursor
 				reloadQueueCursor();
+				Log.e("重载cursor", "重载cursor");
 		}}
     /**
      * Reload the queue after we remove a track

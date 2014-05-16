@@ -76,8 +76,6 @@ public abstract class DragSortListViewFragment extends RefreshableFragment imple
     
     protected Uri mUri = null;
     
-    //TODO
-    protected ArrayList<Integer> morderList = new ArrayList<Integer>();
     // Bundle
     public DragSortListViewFragment() {
     }
@@ -214,8 +212,6 @@ public abstract class DragSortListViewFragment extends RefreshableFragment imple
    
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-    	//取出真实地址
-    	position = morderList.get(position);
         MusicUtils.playAll(getActivity(), mCursor, position);
     }
 
