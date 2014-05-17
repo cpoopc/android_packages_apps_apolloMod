@@ -55,13 +55,20 @@
 	                android:layout_toRightOf="@+id/bottom_action_bar_album_art"
 	                android:textSize="@dimen/text_size_micro"
 	                android:textColor="@color/transparent_black" />
+
+
 	    </RelativeLayout>
-        
+
+
+        <ImageButton
+            android:id="@+id/btn_suffle"
+            style="@style/BottomActionBarItem"
+            android:src="@drawable/selector_suffle" />
         <ImageButton
             android:id="@+id/bottom_action_bar_previous"
             style="@style/BottomActionBarItem"
             android:contentDescription="@string/cd_previous"
-            android:src="@drawable/apollo_holo_light_previous" />
+            android:src="@drawable/selector_prev" />
 
         <ImageButton
             android:id="@+id/bottom_action_bar_play"
@@ -73,7 +80,7 @@
             android:id="@+id/bottom_action_bar_next"
             style="@style/BottomActionBarItem"
             android:contentDescription="@string/cd_next"
-            android:src="@drawable/apollo_holo_light_next" />      
+            android:src="@drawable/selector_next" />
               
         <ImageButton
             android:id="@+id/bottom_action_bar_switch_queue"

@@ -117,19 +117,19 @@ public abstract class ListViewAdapter extends SimpleCursorAdapter {
         }
         //播放时候的波浪动画,更改完毕
         if ( ( mPlayingId !=0 && mCurrentId !=0 ) && mPlayingId ==  mCurrentId ) {
-            holderReference.get().mPeakOne.setImageResource(R.anim.peak_meter_cp);
-            mPeakOneAnimation = (AnimationDrawable)holderReference.get().mPeakOne.getDrawable();
+            holderReference.get().mPeakTwo.setImageResource(R.anim.peak_meter_cp);
+            mPeakTwoAnimation = (AnimationDrawable)holderReference.get().mPeakTwo.getDrawable();
             try {
                 if ( MusicUtils.mService.isPlaying() ) {
-                    mPeakOneAnimation.start();
+                	mPeakTwoAnimation.start();
                 } else {
-                    mPeakOneAnimation.stop();
+                	mPeakTwoAnimation.stop();
                 }
             } catch ( RemoteException e ) {
                 e.printStackTrace();
             }
         } else {
-            holderReference.get().mPeakOne.setImageResource(0);
+            holderReference.get().mPeakTwo.setImageResource(0);
 //            holderReference.get().mPeakTwo.setImageResource(0);
         }
         return view;

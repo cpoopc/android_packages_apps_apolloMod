@@ -1,5 +1,6 @@
 package com.andrew.apolloMod.views;
 
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -34,7 +35,7 @@ public class VerticalSeekBar extends SeekBar {
         c.rotate(-90);
         c.translate(-getHeight(), 0);
 
-        super.onDraw(c);
+        super.onDraw(c); 
     }
 
     @Override
@@ -42,11 +43,11 @@ public class VerticalSeekBar extends SeekBar {
         if (!isEnabled()) {
             return false;
         }
-
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
             case MotionEvent.ACTION_UP:
+            	
                 setProgress(getMax() - (int) (getMax() * event.getY() / getHeight()));
                 onSizeChanged(getWidth(), getHeight(), 0, 0);
                 break;

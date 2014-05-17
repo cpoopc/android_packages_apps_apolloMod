@@ -1,6 +1,7 @@
 
 package com.andrew.apolloMod.ui.fragments.list;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -42,19 +43,9 @@ public class SongsFragment extends ListViewFragment{
     	shuffle.setOnClickListener(new RelativeLayout.OnClickListener() {  
             public void onClick(View v)
             {
-                Uri uri = Audio.Media.EXTERNAL_CONTENT_URI;
-                String[] projection = new String[] {
-                    BaseColumns._ID
-                };
-                String selection = AudioColumns.IS_MUSIC + "=1";
-                String sortOrder = "RANDOM()";
-                Cursor cursor = MusicUtils.query(getActivity(), uri, projection, selection, null, sortOrder);
-                if (cursor != null) {
-                    MusicUtils.shuffleAll(getActivity(), cursor);
-                    cursor.close();
-                    cursor = null;
-                }
+                MusicUtils.suffle(getActivity());
             }
+
          });
     }
 

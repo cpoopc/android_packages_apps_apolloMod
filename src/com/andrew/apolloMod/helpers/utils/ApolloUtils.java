@@ -41,6 +41,7 @@ import com.andrew.apolloMod.activities.TracksBrowser;
 import com.andrew.apolloMod.cache.ImageInfo;
 import com.andrew.apolloMod.cache.ImageProvider;
 import com.androidquery.util.AQUtility;
+import com.example.ex.ToastUtils;
 
 import static com.andrew.apolloMod.Constants.ALBUM_ID_KEY;
 import static com.andrew.apolloMod.Constants.ALBUM_KEY;
@@ -325,11 +326,12 @@ public class ApolloUtils {
      * @param message
      */
     public static void showToast(int message, Toast mToast, Context context) {
-        if (mToast == null) {
-            mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
-        }
-        mToast.setText(context.getString(message));
-        mToast.show();
+//        if (mToast == null) {
+//            mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+//        }
+//        mToast.setText(context.getString(message));
+//        mToast.show();
+    	ToastUtils.showToast(context, context.getString(message));
     }
     
     public static void startTracksBrowser(String Type, long id, Cursor mCursor, Context context ) {

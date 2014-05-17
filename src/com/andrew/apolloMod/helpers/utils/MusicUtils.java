@@ -38,6 +38,7 @@ import android.provider.MediaStore.Audio.Playlists;
 import android.provider.MediaStore.Audio.PlaylistsColumns;
 import android.provider.MediaStore.MediaColumns;
 import android.provider.Settings;
+import android.support.v4.app.FragmentActivity;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -1353,5 +1354,19 @@ public class MusicUtils {
         } catch (Exception e) {
         }
     }
+	public static void suffle(Context context) {
+		Uri uri = Audio.Media.EXTERNAL_CONTENT_URI;
+        String[] projection = new String[] {
+            BaseColumns._ID
+        };
+        String selection = AudioColumns.IS_MUSIC + "=1";
+        String sortOrder = "RANDOM()";
+        Cursor cursor = MusicUtils.query(context, uri, projection, selection, null, sortOrder);
+        if (cursor != null) {
+            MusicUtils.shuffleAll(context, cursor);
+            cursor.close();
+            cursor = null;
+        }
+	}
 
 }

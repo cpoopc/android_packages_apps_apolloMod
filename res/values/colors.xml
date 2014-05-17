@@ -32,5 +32,13 @@
 
     <!-- Quick Queue line seperator -->
     <color name="queue_callout_line">#99ffffff</color>
-
+<!-- 	粉色 -->
+	<color name="pink">#EC88A4</color>
+	<drawable name="pink">#EC88A4</drawable>
+<!-- 	绿色 -->
+	<color name="green">#BAF15A</color>
+	<drawable name="green">#16BC5C</drawable>
+<!-- 	绿色 -->
+	<color name="yellow">#F1DD5A</color>
+	<drawable name="yellow">#F1DD5A</drawable>
 </resources>

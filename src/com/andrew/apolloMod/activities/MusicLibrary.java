@@ -16,6 +16,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.audiofx.AudioEffect;
 import android.net.Uri;
@@ -35,6 +36,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.andrew.apolloMod.IApolloService;
@@ -291,8 +293,9 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
      */
     private void initActionBar() {
     	ActionBar actBar = getActionBar();
-    	actBar.setLogo(R.drawable.ic_launcher);
-    	actBar.setTitle(R.string.app_name);
+//    	actBar.setLogo(R.drawable.ic_monster);
+//    	actBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.green));
+//    	actBar.setTitle(R.string.app_name);
     	actBar.setDisplayUseLogoEnabled(true);
         actBar.setDisplayShowTitleEnabled(true);
     }
@@ -303,9 +306,9 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-	        case R.id.action_search:
-	            onSearchRequested();
-	            break;
+//	        case R.id.action_search:
+//	            onSearchRequested();
+//	            break;
 
 	        case R.id.action_settings:
 	        	startActivityForResult(new Intent(this, SettingsHolder.class),0);
@@ -323,7 +326,7 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
 	            break;
 
 	        case R.id.action_shuffle_all:
-	        	shuffleAll();
+	        	MusicUtils.suffle(this);
 	            break;
 
             default:
@@ -347,24 +350,16 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.actionbar_top, menu);
+	    SearchView searchView = new SearchView(this);
+	    menu.add("sousuo")
+	    .setIcon(R.drawable.apollo_holo_dark_search)
+	    .setActionView(searchView)
+	    .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+//	    MenuItem searchItem = menu.findItem(R.id.action_search);
+//	    SearchView searchView = (SearchView) searchItem.getActionView();
+//	    searchView.setBackgroundColor(Color.WHITE);
+//	    searchView.setBackgroundDrawable(getResources().getDrawable(R.drawable.green));
 	    return true;
 	}
 
-	/**
-     * Shuffle all the tracks
-     */
-    public void shuffleAll() {
-        Uri uri = Audio.Media.EXTERNAL_CONTENT_URI;
-        String[] projection = new String[] {
-            BaseColumns._ID
-        };
-        String selection = AudioColumns.IS_MUSIC + "=1";
-        String sortOrder = "RANDOM()";
-        Cursor cursor = MusicUtils.query(this, uri, projection, selection, null, sortOrder);
-        if (cursor != null) {
-            MusicUtils.shuffleAll(this, cursor);
-            cursor.close();
-            cursor = null;
-        }
-    }
 }

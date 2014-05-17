@@ -19,4 +19,7 @@
     android:includeInGlobalSearch="true"
     android:label="@string/search"
     android:searchSuggestIntentAction="android.intent.action.VIEW"
-    android:voiceSearchMode="showVoiceSearchButton|launchRecognizer" />
+    android:voiceSearchMode="showVoiceSearchButton|launchRecognizer" 
+    android:hint="搜索"
+    
+    />

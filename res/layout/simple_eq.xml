@@ -23,7 +23,8 @@
         android:layout_marginLeft="@dimen/simple_eq_margin_left_right"
         android:layout_marginRight="@dimen/simple_eq_margin_left_right"
 	    android:max="100"
-	    android:progress="0"/>
+	    android:thumb="@drawable/equalizer_seekbar_thumb_normal"
+	    android:progress="100"/>
 	
 	
     <CheckBox 
@@ -62,11 +63,12 @@
         		android:gravity="center_horizontal"/>
             <com.andrew.apolloMod.views.VerticalSeekBar 
                 android:id="@+id/simple_eq_band0_seek"
-        		android:gravity="center_horizontal"
-        		android:layout_height="fill_parent"
+                android:layout_height="fill_parent"
         		android:layout_width="@dimen/simple_eq_seek_vert_width"
+        		android:gravity="center_horizontal"
         		android:paddingRight="@dimen/simple_eq_seek_vert_padding_right"
         		android:paddingLeft="@dimen/simple_eq_seek_vert_padding_left"
+	    		android:thumb="@drawable/equalizer_seekbar_thumb_normal"
 	    		android:max="100"
 	    		android:progress="100"/>
         </LinearLayout>
@@ -85,12 +87,14 @@
         		android:layout_height="wrap_content"
         		android:gravity="center_horizontal"/>
             <com.andrew.apolloMod.views.VerticalSeekBar 
+	    android:thumb="@drawable/equalizer_seekbar_thumb_normal"
                 android:id="@+id/simple_eq_band1_seek"
         		android:gravity="center_horizontal"
         		android:layout_height="fill_parent"
         		android:layout_width="@dimen/simple_eq_seek_vert_width"
         		android:paddingRight="@dimen/simple_eq_seek_vert_padding_right"
         		android:paddingLeft="@dimen/simple_eq_seek_vert_padding_left"
+       			 android:focusableInTouchMode="true"
 	    		android:max="100"
 	    		android:progress="100"/>
         </LinearLayout>
@@ -109,12 +113,14 @@
         		android:layout_height="wrap_content"
         		android:gravity="center_horizontal"/>
             <com.andrew.apolloMod.views.VerticalSeekBar 
+	    android:thumb="@drawable/equalizer_seekbar_thumb_normal"
                 android:id="@+id/simple_eq_band2_seek"
         		android:gravity="center_horizontal"
         		android:layout_height="fill_parent"
         		android:layout_width="@dimen/simple_eq_seek_vert_width"
         		android:paddingRight="@dimen/simple_eq_seek_vert_padding_right"
         		android:paddingLeft="@dimen/simple_eq_seek_vert_padding_left"
+       			 android:focusableInTouchMode="true"
 	    		android:max="100"
 	    		android:progress="100"/>
         </LinearLayout>
@@ -133,12 +139,14 @@
         		android:layout_height="wrap_content"
         		android:gravity="center_horizontal"/>
             <com.andrew.apolloMod.views.VerticalSeekBar 
+	    android:thumb="@drawable/equalizer_seekbar_thumb_normal"
                 android:id="@+id/simple_eq_band3_seek"
         		android:gravity="center_horizontal"
         		android:layout_height="fill_parent"
         		android:layout_width="@dimen/simple_eq_seek_vert_width"
         		android:paddingRight="@dimen/simple_eq_seek_vert_padding_right"
         		android:paddingLeft="@dimen/simple_eq_seek_vert_padding_left"
+       			 android:focusableInTouchMode="true"
 	    		android:max="100"
 	    		android:progress="100"/>
         </LinearLayout>
@@ -157,12 +165,14 @@
         		android:layout_height="wrap_content"
         		android:gravity="center_horizontal"/>
             <com.andrew.apolloMod.views.VerticalSeekBar 
+	    android:thumb="@drawable/equalizer_seekbar_thumb_normal"
                 android:id="@+id/simple_eq_band4_seek"
         		android:gravity="center_horizontal"
         		android:layout_height="fill_parent"
         		android:layout_width="@dimen/simple_eq_seek_vert_width"
         		android:paddingRight="@dimen/simple_eq_seek_vert_padding_right"
         		android:paddingLeft="@dimen/simple_eq_seek_vert_padding_left"
+       			 android:focusableInTouchMode="true"
 	    		android:max="100"
 	    		android:progress="100"/>
         </LinearLayout>
@@ -181,12 +191,14 @@
         		android:layout_height="wrap_content"
         		android:gravity="center_horizontal"/>
             <com.andrew.apolloMod.views.VerticalSeekBar 
+	    android:thumb="@drawable/equalizer_seekbar_thumb_normal"
                 android:id="@+id/simple_eq_band5_seek"
         		android:gravity="center_horizontal"
         		android:layout_height="fill_parent"
         		android:layout_width="@dimen/simple_eq_seek_vert_width"
         		android:paddingRight="@dimen/simple_eq_seek_vert_padding_right"
         		android:paddingLeft="@dimen/simple_eq_seek_vert_padding_left"
+       			 android:focusableInTouchMode="true"
 	    		android:max="100"
 	    		android:progress="100"/>
         </LinearLayout>

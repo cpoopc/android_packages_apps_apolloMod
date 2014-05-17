@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.andrew.apolloMod.R;
 import com.andrew.apolloMod.helpers.utils.MusicUtils;
@@ -25,16 +26,23 @@ import com.andrew.apolloMod.ui.widgets.BottomActionBar;
 
 public class BottomActionBarFragment extends Fragment {
 
-	private ImageButton mPrev, mPlay, mNext, mQueue;
+	private ImageButton mPrev, mPlay, mNext, mQueue,mSuffle;
     private BottomActionBar mBottomActionBar;
     private RelativeLayout albumArt, listQueue;
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	View root = inflater.inflate(R.layout.bottom_action_bar, container);
+    	
         mBottomActionBar = new BottomActionBar(getActivity());
-        
-        
+        mSuffle = (ImageButton) root.findViewById(R.id.btn_suffle);
+        mSuffle.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				MusicUtils.suffle(getActivity());
+			}
+		});
         mQueue = (ImageButton)root.findViewById(R.id.bottom_action_bar_switch_queue);
         
         
@@ -133,6 +141,7 @@ public class BottomActionBarFragment extends Fragment {
     	mPrev.setVisibility(View.VISIBLE);
     	mNext.setVisibility(View.VISIBLE);
     	mPlay.setVisibility(View.VISIBLE);
+    	mSuffle.setVisibility(View.VISIBLE);
     	
     	mQueue.setImageResource(R.drawable.btn_switch_queue);
     	mQueue.setVisibility(View.GONE);
@@ -149,6 +158,7 @@ public class BottomActionBarFragment extends Fragment {
     	mPrev.setVisibility(View.GONE);
     	mNext.setVisibility(View.GONE);
     	mPlay.setVisibility(View.GONE);
+    	mSuffle.setVisibility(View.GONE);
     	mQueue.setVisibility(View.VISIBLE);
     }
     
