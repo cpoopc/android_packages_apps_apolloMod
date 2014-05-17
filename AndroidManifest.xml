@@ -27,7 +27,7 @@
     <application
         android:allowTaskReparenting="true"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_monster"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:process=":main"
@@ -55,10 +55,10 @@
         </activity>
 
         <!-- Main Activity -->
+<!--         	android:logo="@drawable/ic_logo" -->
         <activity
             android:name=".activities.MusicLibrary"
             android:label="@string/app_name"
-        	android:logo="@drawable/ic_logo"
             android:windowSoftInputMode="adjustPan" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
