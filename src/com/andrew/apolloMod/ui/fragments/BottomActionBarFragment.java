@@ -23,7 +23,11 @@ import com.andrew.apolloMod.helpers.utils.MusicUtils;
 import com.andrew.apolloMod.service.ApolloService;
 import com.andrew.apolloMod.ui.fragments.list.NowPlayingFragment;
 import com.andrew.apolloMod.ui.widgets.BottomActionBar;
-
+/**
+ * 播放面板
+ * @author Administrator
+ *
+ */
 public class BottomActionBarFragment extends Fragment {
 
 	private ImageButton mPrev, mPlay, mNext, mQueue,mSuffle;
@@ -107,6 +111,7 @@ public class BottomActionBarFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        //广播接收者
         IntentFilter filter = new IntentFilter();
         filter.addAction(ApolloService.PLAYSTATE_CHANGED);
         filter.addAction(ApolloService.META_CHANGED);
@@ -188,7 +193,7 @@ public class BottomActionBarFragment extends Fragment {
             ex.printStackTrace();
         }
     }
-    //三道杠
+    //slidingup之后,bottom变为top,显示右侧三道杠,隐藏播放键
 	public void setUpQueueSwitch(Activity activity) {
 		// TODO Auto-generated method stub
 		//封面
@@ -200,6 +205,7 @@ public class BottomActionBarFragment extends Fragment {
             public void onClick(View v) {
             	if(albumArt.getVisibility()==View.VISIBLE){
             		listQueue.removeAllViews();
+            		//不是childFragmentManager,调用所在的activity的fragmentManager
             		getFragmentManager().beginTransaction().add(R.id.audio_player_queue_wrapper, new NowPlayingFragment(), "NowPlayingTag").commit();
             		mQueue.setImageResource(R.drawable.btn_switch_queue_active);
                     albumArt.setVisibility(View.GONE);

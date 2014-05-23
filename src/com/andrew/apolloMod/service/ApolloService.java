@@ -1302,6 +1302,7 @@ public class ApolloService extends Service implements GetBitmapTask.OnBitmapRead
      * Starts playback of a previously opened file.
      */
     public void play() {
+    	//TODO 干嘛用的?
         mAudioManager.requestAudioFocus(mAudioFocusListener, AudioManager.STREAM_MUSIC,
                 AudioManager.AUDIOFOCUS_GAIN);
         mAudioManager.registerMediaButtonEventReceiver(new ComponentName(getPackageName(),

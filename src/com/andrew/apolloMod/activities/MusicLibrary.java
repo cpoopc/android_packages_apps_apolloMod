@@ -92,12 +92,13 @@ public class MusicLibrary extends FragmentActivity implements ServiceConnection 
     }
     //slidinguppanel
 	private void initBottomPanel() {
+		//播放控制面板fragment
 		mBActionbar =(BottomActionBarFragment) getSupportFragmentManager().findFragmentById(R.id.bottomactionbar_new);
   
         mBActionbar.setUpQueueSwitch(this);
         
         mPanel = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
-
+ 
         mPanel.setAnchorPoint(0);
         
         mPanel.setDragView(findViewById(R.id.bottom_action_bar_dragview));
